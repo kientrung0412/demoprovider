@@ -1,5 +1,6 @@
+import 'package:demo_provider/ui/home/home_list_student.dart';
 import 'package:demo_provider/ui/home/home_provider.dart';
-import 'package:demo_provider/ui/home/view_user.dart';
+import 'package:demo_provider/ui/home/home_search_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -9,13 +10,23 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: ChangeNotifierProvider(
-      create: (context) => new HomeProvider.getListUsers(1),
+      create: (context) => new HomeProvider.getListUsers(),
       builder: (context, child) => Consumer<HomeProvider>(
-          builder: (context, value, child) => ListView.builder(
-                itemCount: value.dataResponse.length,
-                itemBuilder: (context, index) {
-                  return ItemUser(value.dataResponse[index]);
-                },
+          builder: (context, provider, child) => SafeArea(
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Container(
+                          margin: EdgeInsets.only(bottom: 16),
+                          child: HomeSearchBar()),
+                      Expanded(
+                        child: HomeListStudent(),
+                      ),
+                    ],
+                  ),
+                ),
               )),
     ));
   }
