@@ -1,16 +1,16 @@
+import 'package:demo_provider/ui/home/students/students_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class HomeSearchBar extends StatelessWidget {
-  Function onChange;
-
-  HomeSearchBar({this.onChange});
-
+class StudentsSearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<StudentsProvider>(context);
     return TextField(
-        onChanged: onChange,
-        decoration: InputDecoration(
+        onChanged: provider.search,
+        controller: provider.textController,
+        decoration: const InputDecoration(
             border: OutlineInputBorder(),
             suffixIcon: Icon(Icons.search),
             contentPadding:

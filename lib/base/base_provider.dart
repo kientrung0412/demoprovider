@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'base_response.dart';
 
 class BaseProvider extends ChangeNotifier {
+
   Future<T> onComplete<T extends BaseResponse>(
       T value, Function(T successData) onSuccess) {
     onSuccess(value);

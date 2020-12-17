@@ -5,14 +5,12 @@ import 'package:retrofit/http.dart';
 
 part 'api.g.dart';
 
-
-@RestApi(baseUrl: BASE_URL)
+@RestApi(baseUrl: Constant.BASE_URL)
 abstract class Api {
   factory Api(Dio dio) {
-    return _Api(dio, baseUrl: BASE_URL);
+    return _Api(dio, baseUrl: Constant.BASE_URL);
   }
 
   @GET('users')
   Future<UsersResponse> getUser(@Query("page") int page);
 }
-

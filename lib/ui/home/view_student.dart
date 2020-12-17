@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:demo_provider/api/response/user/data_response.dart';
-import 'package:demo_provider/cons/colors.dart';
+import 'package:demo_provider/cons/custom_deco.dart';
+import 'package:demo_provider/cons/custom_edge.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -17,28 +18,28 @@ class ItemUser extends StatelessWidget {
       actionPane: SlidableDrawerActionPane(),
       actionExtentRatio: 0.25,
       child: InkWell(
-        onTap: onClickItem,
+        onTap: () => onClickItem(context),
         child: Container(
-          padding: EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-          margin: EdgeInsets.symmetric(vertical: 4),
-          decoration: new BoxDecoration(
-              color: grey,
-              borderRadius: BorderRadiusDirectional.all(Radius.circular(5))),
+          padding: CustomEdge.edgeHorizontal8Vertical12,
+          margin: CustomEdge.edgeVertical4,
+          decoration: CustomDeco.borderR5BgGreyFF,
           child: Row(
             mainAxisSize: MainAxisSize.max,
             children: [
               Text(
                 (_index + 1).toString() + ".",
-                style: TextStyle(fontWeight: FontWeight.w600),
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
               Expanded(
                   child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: 12),
+                    margin: CustomEdge.edgeHorizontal12,
                     child: CachedNetworkImage(
                       imageUrl: _dataResponse.avatar,
+                      height: 64,
+                      width: 64,
                       memCacheHeight: 64,
                       memCacheWidth: 64,
                     ),
@@ -81,10 +82,10 @@ class ItemUser extends StatelessWidget {
                   ),
                 ],
               )),
-              Container(
-                margin: EdgeInsets.only(left: 8),
-                child: InkWell(
-                  onTap: onClickChat,
+              InkWell(
+                onTap: onClickChat,
+                child: Container(
+                  padding: CustomEdge.edgeLeft8,
                   child: Icon(
                     Icons.message_rounded,
                   ),
@@ -99,19 +100,21 @@ class ItemUser extends StatelessWidget {
           caption: 'More',
           color: Colors.black45,
           icon: Icons.more_horiz,
-          onTap: onClickMore(),
+          onTap: onClickMore,
         ),
         IconSlideAction(
           caption: 'Delete',
           color: Colors.red,
           icon: Icons.delete,
-          onTap: onClickDelete(),
+          onTap: onClickDelete,
         ),
       ],
     );
   }
 
-  onClickItem() {}
+  onClickItem(BuildContext ctx) {
+    Navigator.pushNamed(ctx, "hi");
+  }
 
   onClickChat() {}
 

@@ -1,1 +1,3 @@
-const BASE_URL = "https://reqres.in/api/";
+class Constant {
+  static const BASE_URL = "https://reqres.in/api/";
+}

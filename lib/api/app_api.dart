@@ -8,7 +8,7 @@ import 'api.dart';
 class AppApi {
   static final Dio dio = Dio()
     ..options = BaseOptions(
-        baseUrl: BASE_URL, connectTimeout: 30000, receiveTimeout: 6000)
+        baseUrl: Constant.BASE_URL, connectTimeout: 30000, receiveTimeout: 6000)
     ..interceptors.add(LogInterceptor(
       responseBody: true,
       requestBody: true,

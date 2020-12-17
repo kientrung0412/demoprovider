@@ -9,7 +9,7 @@ part of 'api.dart';
 class _Api implements Api {
   _Api(this._dio, {this.baseUrl}) {
     ArgumentError.checkNotNull(_dio, '_dio');
-    baseUrl ??= 'https://reqres.in/';
+    baseUrl ??= 'https://reqres.in/api/';
   }
 
   final Dio _dio;
